@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: query
+spec:
+  selector:
+    app: query
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: basicinfo
+spec:
+  selector:
+    app: basicinfo
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: star
+spec:
+  selector:
+    app: star
+  ports:
+  - port: 80
+    targetPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: recommend
+spec:
+  selector:
+    app: recommend
+  ports:
+  - port: 80
+    targetPort: 8080

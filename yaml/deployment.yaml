@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: query
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: query
+  template:
+    metadata:
+      name: query
+      labels:
+        app: query
+        version: v1
+    spec:
+      containers:
+      - image: wereliang/query:v1
+        name: query
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basicinfo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basicinfo
+  template:
+    metadata:
+      name: basicinfo
+      labels:
+        app: basicinfo
+        version: v1
+    spec:
+      containers:
+      - image: wereliang/basicinfo:v1
+        name: basicinfo
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: star
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: star
+  template:
+    metadata:
+      name: star
+      labels:
+        app: star
+        version: v1
+    spec:
+      containers:
+      - image: wereliang/star:v1
+        name: star
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendv1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommend
+      version: v1
+  template:
+    metadata:
+      name: recommendv1
+      labels:
+        app: recommend
+        version: v1
+    spec:
+      containers:
+      - image: wereliang/recommend:v1
+        name: recommendv1
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recommendv2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recommend
+      version: v2
+  template:
+    metadata:
+      name: recommendv2
+      labels:
+        app: recommend
+        version: v2
+    spec:
+      containers:
+      - image: wereliang/recommend:v2
+        name: recommendv2
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        
